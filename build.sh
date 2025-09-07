@@ -9,7 +9,7 @@ SNIPPET=""
 function usage() {
 	cat <<EOF
 Usage: ${0##*/} -s <snippet>
-Example: ${0##*/} 003
+Example: ${0##*/} -s 003
 EOF
 	return 0
 }
