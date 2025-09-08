@@ -1,5 +1,5 @@
 class Rectangle(val height: Int, val width: Int) {
-    val isRectangle: Boolean
+    val isSquare: Boolean
         get() { // Property getter declaration
             return width == height
         }
