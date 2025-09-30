@@ -40,6 +40,10 @@ done
 
 export STUDIO_HOME=~/android-studio-2024.2.1.11-linux/android-studio
 export JAVA_HOME=$STUDIO_HOME/jbr
-bash $STUDIO_HOME/plugins/Kotlin/kotlinc/bin/kotlinc "$SNIPPET.kt" -include-runtime -d "out/$SNIPPET.jar"
+SNIPPETKT=$SNIPPET.kt
+[[ -d "$SNIPPET" ]] && SOURCES="$SNIPPET/*.kt"
+[[ -f "$SNIPPETKT" ]] && SOURCES=$SNIPPETKT
+echo "Build $SOURCES ..."
+bash $STUDIO_HOME/plugins/Kotlin/kotlinc/bin/kotlinc $SOURCES -include-runtime -d "out/$SNIPPET.jar"
 $JAVA_HOME/bin/java -jar "out/$SNIPPET.jar"
 unset SNIPPET JAVA_HOME STUDIO_HOME
