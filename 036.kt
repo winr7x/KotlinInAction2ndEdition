@@ -1,4 +1,4 @@
-package geometry.shapes; // Package declaration
+package geometry.shapes // Package declaration
 
 class Rectangle(val height: Int, val width: Int) {
     val isSquare: Boolean
