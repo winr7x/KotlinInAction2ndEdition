@@ -1,7 +1,7 @@
 enum class Color(
-    r: Int,        // Property r
-    g: Int,        // Property g
-    b: Int         // Property b
+    val r: Int,        // Property r
+    val g: Int,        // Property g
+    val b: Int         // Property b
 ) {
     RED(255, 0, 0),        // Constant RED with specified property values
     ORANGE(255, 165, 0),
@@ -19,10 +19,39 @@ enum class Color(
     fun printColor() = println("$this is $rgb")
 }
 
+fun getMnemonic(color: Color) =
+    // Multiline expression body
+    when (color) {                // when syntax
+        Color.RED -> "Richard"
+        Color.ORANGE -> "Of"
+        Color.YELLOW -> "York"
+        Color.GREEN -> "Gave"
+        Color.BLUE -> "Battle"
+        Color.INDIGO -> "In"
+        Color.VIOLET -> "Vain"
+    }
+
+fun measureColor() = Color.ORANGE
+
+fun getWarmthFromSensor() : String {
+    val color = measureColor()
+    return when (color) {
+        Color.RED, Color.ORANGE, Color.YELLOW -> "warm (red = ${color.r})"
+        Color.GREEN -> "neutral (green = ${color.g})"
+        Color.BLUE, Color.INDIGO, Color.VIOLET -> "cold (blue = ${color.b})"
+    }
+}
+
 fun main() {
     println(Color.BLUE.rgb)
     // 256
 
     Color.GREEN.printColor()
     // GREEN is 65280
+
+    println(getMnemonic(Color.BLUE))
+    // Battle
+
+    println(getWarmthFromSensor())
+    // warm (red = 255)
 }
